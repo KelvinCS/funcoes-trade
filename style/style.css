@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+ }
+div .alert{
+    margin: 10px;
+}
+h3{
+  color: #2D3E50;
+}
+.navbar-default,
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form{
+    border: none;
+    border-radius: 0;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.modal-content{
+    background-color: transparent;
+    color: #FFF;
+}
+.navbar-default .navbar-nav > .active > a{
+    background-color: #E91E63;
+    color: #FFF;
+}
+.navbar-default,
+.sobre{
+    background-color: #E8683E;
+}
+.navbar-default .navbar-toggle .icon-bar{
+ 	  background-color: white;
+}
+.navbar-brand img{
+    margin: -3px -5px;
+}
+.btn{
+    color: white;
+    border-radius: 3px;
+    border: none;
+}
+.btn-success,
+.btn-success:focus,
+.success{
+    background-color: #009688;
+}
+.btn-primary,
+.btn-primary:focus, 
+.primary{
+    background-color: #00BCD4;
+}
+.btn-warning,
+.btn-warning:focus,
+.warning{
+    background-color: #E8D104;
+}
+.btn-danger,
+.danger{
+    background-color: #E91E63;
+}
+.btn-default,
+.default{
+    background-color: #2D3E50;
+}
+.btn-success:hover{
+    background-color: #047D7D;
+}
+.btn-primary:hover{
+    background-color: #02A1B5;
+}
+.btn-warning:hover{
+    background-color: #DCC605;
+}
+.btn-danger:hover{
+    background-color: #C30747;
+}
+.btn-default:hover{
+    color: white;
+    background-color: #23303E;
+}
+input[type=text]{
+    border-radius: 4px;
+}
+.input-group{
+    margin-bottom: 10px;
+}
+input[type=text]:focus{
+    box-shadow: none;
+    border-color: #FF5722;
+}
+.sobre{
+  	margin-top: 2em;
+  	width: 100%;
+  	height: auto;
+  	color: white;
+}
+.sobre div h3{
+    font-size: 2em;
+}
+.sobre div p{
+    text-indent: 1.5em;
+    text-align: justify;
+    font-size: 1.5em;
+}
