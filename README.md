@@ -1,1 +1,1 @@
-# funcoes-trade
+# Funções para trade.
