@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cálculo Lucro</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+	        <div class="container">
+	           	<div class="navbar-header">
+	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+	             	<a class="navbar-brand" href="index.html">Trade booster - <i>FoxBit</i></a>
+	           </div>
+	           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li class="text-center nconversao1"><a href="#real_btc">Conversão real/bitcoin</a></li>
+	                    <li class="text-center ncalculo_lucro"><a href="#calculo_lucro">Cálculo lucro/perda</a></li>
+	                    <li class="text-center nconversao2"><a href="#btc_real">Conversão bitcoin/real</span></a></li>
+	                </ul>
+	            </div>
+	        </div>
+	    </nav>
+		<div class="container">
+			<div class="row">
+				<div class="aviso"></div>
+
+				<div class="col-lg-4 col-md-6" id="real_btc">
+					<h3 class="text-center">Conversão real/bitcoin</h3>
+					<form>
+						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Digite a cotação da compra:</span>
+  							<input type="text" class="form-control" id="cotacao_compra" value="" autocomplete="off">
+						</div>
+						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Digite o valor que quer comprar:</span>
+  							<input type="text" class="form-control" id="valor_compra" value="" placeholder="Em reais:" autocomplete="off">
+						</div>
+						<button type="button" class="btn btn-success btn-lg btn-block" id="enviar1" data-toggle="modal" data-target=".bs-example-modal-sm">Converter</button>
+						<input type="reset" class="btn btn-default btn-lg btn-block l1" value="Limpar Campos">
+					</form>
+					<div class="conversao"></div>
+				</div>
+
+				<div class="col-lg-4 col-md-6" id="calculo_lucro">
+					<h3 id="calc_lucro" class="text-center">Cálculo lucro/perda</h3>
+					<form>
+						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Quantidade em BTC:</span>
+  							<input type="text" class="form-control" id="qtd_comprada" value="" autocomplete="off">
+						</div>
+						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Cotação da compra:</span>
+  							<input type="text" class="form-control" id="compra_cotacao" value="" autocomplete="off">
+						</div>
+						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Cotação da venda:</span>
+  							<input type="text" class="form-control" id="venda_cotacao" value="" autocomplete="off">
+						</div>
+						<button type="button" class="btn btn-primary btn-lg btn-block" id="enviar2" data-toggle="modal" data-target=".bs-example-modal-sm">Calcular</button>
+						<button type="button" class="btn btn-warning btn-lg btn-block" id="atualizar">Atualizar valores</button>
+						<input type="reset" class="btn btn-default btn-lg btn-block l2" value="Limpar Campos">
+					</form>
+					<div class="calculo_lucro1"></div>
+					<div class="calculo_lucro2"></div>
+					<div class="calculo_lucro3"></div>
+				</div>
+
+				<div class="col-lg-4 col-md-6" id="conversao2">
+					<h3 class="text-center">Conversão bitcoin/real</h3>
+					<form>
+						<div class="input-group">
+  							<span class="input-group-addon" id="basic-addon1">Digite a cotação da venda:</span>
+  							<input type="text" class="form-control" id="cotacao_venda" value="" autocomplete="off">
+						</div>
+						<div class="input-group">
+  							<span class="input-group-addon" id="sizing-addon1">Digite o valor que quer vender:</span>
+  							<input type="text" class="form-control" id="qtd_btc" placeholder="Em BTC:"value="" autocomplete="off">
+						</div>
+						<button type="button" class="btn btn-danger btn-lg btn-block" id="enviar3" data-toggle="modal" data-target=".bs-example-modal-sm">Converter</button>
+						<input type="reset" class="btn btn-default btn-lg btn-block l3" value="Limpar Campos">
+					</form>
+					<div class="conversao1"></div>
+				</div>
+
+			</div>
+		</div>
+		<section class="sobre">
+			<div class="container">
+				<h2 class="text-center">Sobre o trade booster</h2>
+				<p class="lead">O trade booster tem como por objetivo unir
+				as principais funções para operar em uma bolsa de bitcoins,
+				nesse caso escolhemos a <i>FoxBit</i>, exchange na qual possui
+				o maior volume e as melhores taxas do país.
+				</p>
+			</div>
+		</section>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/functions.js"></script>
+	</body>
+</html>
