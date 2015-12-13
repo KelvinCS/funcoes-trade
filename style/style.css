@@ -1,19 +1,28 @@
 *{
     margin: 0;
     padding: 0;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
  }
 div .alert{
     margin: 10px;
 }
+.center{
+    margin: 0 auto;
+
+}
 h3{
   color: #2D3E50;
+}
+.navbar{
+    margin-bottom: 0;
 }
 .navbar-default,
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form{
     border: none;
     border-radius: 0;
-}
+ }
 .navbar-default .navbar-brand,
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-nav>li>a,
@@ -30,11 +39,16 @@ h3{
     color: #FFF;
 }
 .navbar-default,
-.sobre{
-    background-color: #E8683E;
+.sobre,
+.btn-fox{
+    background-color: #E65C2E;
+}
+.btn-fox:hover{
+    background-color: #CC3E0F; 
+    color: #FFF;
 }
 .navbar-default .navbar-toggle .icon-bar{
- 	  background-color: white;
+      background-color: white;
 }
 .navbar-brand img{
     margin: -3px -5px;
@@ -83,27 +97,39 @@ h3{
     color: white;
     background-color: #23303E;
 }
-input[type=text]{
-    border-radius: 4px;
-}
 .input-group{
     margin-bottom: 10px;
+}
+.input-group-addon{
+    background-color: #FFF;
+    border-color: #2D3E50;
+    color: #2D3E50; 
+}
+input[type=text]{
+    border-left-color: #2D3E50;
+    border-radius: 4px;
 }
 input[type=text]:focus{
     box-shadow: none;
     border-color: #FF5722;
 }
 .sobre{
-  	margin-top: 2em;
-  	width: 100%;
-  	height: auto;
-  	color: white;
+    margin-top: 2em;
+    width: 100%;
+    height: auto;
+    color: white;
+    padding: 10px;
 }
-.sobre div h3{
+.sobre div h2{
     font-size: 2em;
 }
 .sobre div p{
     text-indent: 1.5em;
     text-align: justify;
     font-size: 1.5em;
+}
+img{
+    background-color: #FFF;
+    padding: 10px;
+    border-radius: 5px;
 }
