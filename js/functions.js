@@ -48,7 +48,7 @@ $(document).ready(function(){
 		}else{
 			$(".conversao").html("<div class='alert alert-success' role='alert'><strong>A quantidade em bitcoin é: </strong>"+resultado+"</div>");
 			$("#qtd_comprada").val(resultado);
-			$("#compra_cotacao").val(cotacao_btc);	
+			$("#compra_cotacao").val(cotacao_compra);	
 		}
 	});
 	// função para calcular lucro ou perda:
@@ -87,13 +87,13 @@ $(document).ready(function(){
 				$(".calculo_lucro2").html("");
 				$(".calculo_lucro3").html("");
 			}else{
-				$(".calculo_lucro1").html("<div class='alert alert-danger' role='alert'><strong>A perda é de R$ </strong>"+lucro * (-1)+"</div>");
+				$(".calculo_lucro1").html("<div class='alert alert-danger' role='alert'><strong>A perda é de R$ </strong>"+(lucro * (-1)).toFixed(8)+"</div>");
 				$(".calculo_lucro2").html("");
 				$(".calculo_lucro3").html("");
 			}
 		}	
 	});
- 	// funação para converter de bitcoin para real:
+ 	// função para converter de bitcoin para real:
 	$("#enviar3").click(function(){
 		var qtd_btc = $("#qtd_btc").val();
 		var cotacao_venda = $("#cotacao_venda").val();
@@ -106,6 +106,20 @@ $(document).ready(function(){
 			$(".conversao1").html("<div class='alert alert-success' role='alert'><strong>O valor é R$ </strong>"+resultado+"</div>");
 		}
 		
+	});
+	$("#enviar4").click(function(){
+		var lucro_desejado = parseFloat($("#lucro_desejado").val()) + 0.5;
+		var cotacao_compra1 = parseFloat($("#cotacao_compra1").val());
+		var soma_lucro = (cotacao_compra1 * lucro_desejado) / 100;
+		var resultado = parseFloat(cotacao_compra1) + parseFloat(soma_lucro); 
+		$('.aviso').html('');
+		if(cotacao_compra1 ==  0 || lucro_desejado == 0){
+			$('.aviso').html(alert);
+			$('.modal-content').addClass('primary');
+		}else{
+			$(".lucro_desejado").html("<div class='alert alert-success' role='alert'><strong>O indicado para venda é R$ </strong>"+resultado.toFixed(2)+"</div>");
+			$("#compra_cotacao").val(cotacao_compra1);	
+		}
 	});
 	//função para atualizar os valores:
 	$("#atualizar").click(function(){
@@ -122,5 +136,8 @@ $(document).ready(function(){
 	});
 	$(".l3").click(function(){
 		$(".conversao1").html("");
+	});
+	$(".l4").click(function(){
+		$(".lucro_desejado").html("");
 	});
 });	
