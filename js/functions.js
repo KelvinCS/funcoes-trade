@@ -4,10 +4,11 @@ $(document).ready(function(){
 		url: 'https://api.blinktrade.com/api/v1/BRL/ticker',
 		dataType: 'jsonp',
 		success: function(fox){
-    		$("#compra_cotacao").val(fox.buy);
-    		$("#venda_cotacao").val(fox.sell);
-    		$("#cotacao_compra").val(fox.buy);	
-    		$("#cotacao_venda").val(fox.sell);
+	    		$("#compra_cotacao").val(fox.buy);
+	    		$("#venda_cotacao").val(fox.sell);
+	    		$("#cotacao_compra").val(fox.buy);	
+	    		$("#cotacao_venda").val(fox.sell);
+	    		$("#cotacao_compra1").val(buy);
 		}
 	});
 	var alert = '<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'+
