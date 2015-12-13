@@ -1,1 +1,2 @@
 # Funções para trade.
+#dsdiajhsiudha
