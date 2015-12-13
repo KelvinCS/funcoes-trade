@@ -6,8 +6,9 @@ $(document).ready(function(){
 		success: function(fox){
     		$("#compra_cotacao").val(fox.buy);
     		$("#venda_cotacao").val(fox.sell);
-    		$("#cotacao_compra").val(fox.buy);	
+    		$("#cotacao_compra").val(fox.buy);
     		$("#cotacao_venda").val(fox.sell);
+    		$("#cotacao_compra1").val(fox.buy);
 		}
 	});
 	var alert = '<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">'+
@@ -21,22 +22,34 @@ $(document).ready(function(){
 						'</div>'+
 					'</div>'+
 				'</div>';
+
+	//funções que adicionam a classe active no item selecionado:
 	$(".nconversao1").click(function(){
 		$(this).addClass("active");
 		$(".ncalculo_lucro").removeClass("active");
 		$(".nconversao2").removeClass("active");
+		$(".valor-alvo").removeClass("active");
 	});
 	$(".ncalculo_lucro").click(function(){
 		$(this).addClass("active");
 		$(".nconversao1").removeClass("active");
 		$(".nconversao2").removeClass("active");
+		$(".valor-alvo").removeClass("active");
 	});
 	$(".nconversao2").click(function(){
 		$(this).addClass("active");
 		$(".nconversao1").removeClass("active");
 		$(".ncalculo_lucro").removeClass("active");
+		$(".valor-alvo").removeClass("active");
 	});
-	// funação para converter de real para bitcoin:
+	$(".valor-alvo").click(function(){
+		$(this).addClass("active");
+		$(".nconversao1").removeClass("active");
+		$(".nconversao2").removeClass("active");
+		$(".ncalculo_lucro").removeClass("active");
+	});
+
+	// função para converter de real para bitcoin:
 	$("#enviar1").click(function(){
 		var cotacao_compra = $("#cotacao_compra").val();
 		var valor_compra = $("#valor_compra").val();
@@ -48,18 +61,20 @@ $(document).ready(function(){
 		}else{
 			$(".conversao").html("<div class='alert alert-success' role='alert'><strong>A quantidade em bitcoin é: </strong>"+resultado+"</div>");
 			$("#qtd_comprada").val(resultado);
-			$("#compra_cotacao").val(cotacao_btc);	
+			$("#compra_cotacao").val(cotacao_compra);
 		}
 	});
+
 	// função para calcular lucro ou perda:
 	$("#enviar2").click(function(){
 		var qtd_comprada = $("#qtd_comprada").val();
 		var compra_cotacao = $("#compra_cotacao").val();
 		var venda_cotacao = $("#venda_cotacao").val();
-		var venda_btc = qtd_comprada - (qtd_comprada * 0.25 / 100); 
+		var venda_btc = qtd_comprada - (qtd_comprada * 0.25 / 100);
 		var valor_pago = qtd_comprada * compra_cotacao;
 		var venda_bruta = ((venda_btc - (venda_btc * 0.25 / 100)) * venda_cotacao);
 		var venda_minima = venda_cotacao - (venda_btc * 0.25 / 100);
+		var taxa_paga = ((venda_btc * venda_cotacao) * 0.25 / 100) + ((qtd_comprada * compra_cotacao) * 0.25 / 100);
 		var lucro = (venda_bruta - (qtd_comprada * compra_cotacao));
 		var saldo = valor_pago + lucro;
 		var em_btc = saldo / venda_cotacao;
@@ -72,28 +87,34 @@ $(document).ready(function(){
 			$(".calculo_lucro1").html("<div class='alert alert-info' role='alert'><strong> O valor da venda foi R$ </strong>"+preco.toFixed(2)+"</div>");
 			$(".calculo_lucro2").html("");
 			$(".calculo_lucro3").html("");
+			$(".calculo_lucro4").html("");
 		}else if(venda_cotacao == 0){
 			var preco = qtd_comprada * compra_cotacao;
 			$(".calculo_lucro1").html("<div class='alert alert-info' role='alert'><strong> O valor da compra foi R$ </strong>"+preco.toFixed(2)+"</div>");
 			$(".calculo_lucro2").html("");
 			$(".calculo_lucro3").html("");
+			$(".calculo_lucro4").html("");
 		}else{
 			if(lucro > 0){
 				$(".calculo_lucro1").html("<div class='alert alert-success' role='alert'><strong> O lucro é de R$ </strong>"+lucro.toFixed(8)+"</div>");
 				$(".calculo_lucro2").html("<div class='alert alert-info' role='alert'><strong> O saldo é R$ </strong>"+saldo.toFixed(2)+" (฿ "+em_btc.toFixed(8)+"), <strong>na cotação R$ </strong>"+venda_cotacao+".</div>");
 				$(".calculo_lucro3").html("<div class='alert alert-info' role='alert'><strong> O saldo inical foi R$ </strong>"+valor_pago.toFixed(2)+"</div>");
+				$(".calculo_lucro4").html("<div class='alert alert-info' role='alert'><strong>A taxa paga foi de R$ </strong>"+taxa_paga.toFixed(2)+"</div>");
 			}else if(lucro == 0){
 				$(".calculo_lucro1").html("<div class='alert alert-info' role='alert'><strong>Vendido a preço da custo.</strong></div>");
 				$(".calculo_lucro2").html("");
 				$(".calculo_lucro3").html("");
+				$(".calculo_lucro4").html("");
 			}else{
-				$(".calculo_lucro1").html("<div class='alert alert-danger' role='alert'><strong>A perda é de R$ </strong>"+lucro * (-1)+"</div>");
+				$(".calculo_lucro1").html("<div class='alert alert-danger' role='alert'><strong>A perda é de R$ </strong>"+(lucro * (-1)).toFixed(8)+"</div>");
 				$(".calculo_lucro2").html("");
 				$(".calculo_lucro3").html("");
+				$(".calculo_lucro4").html("");
 			}
-		}	
+		}
 	});
- 	// funação para converter de bitcoin para real:
+
+ 	// função para converter de bitcoin para real:
 	$("#enviar3").click(function(){
 		var qtd_btc = $("#qtd_btc").val();
 		var cotacao_venda = $("#cotacao_venda").val();
@@ -105,13 +126,32 @@ $(document).ready(function(){
 		}else{
 			$(".conversao1").html("<div class='alert alert-success' role='alert'><strong>O valor é R$ </strong>"+resultado+"</div>");
 		}
-		
 	});
+
+	//função para valor de venda de acordo com porcentagem de lucro.
+	$("#enviar4").click(function(){
+		var cotacao_compra1 = $("#cotacao_compra1").val();
+		var lucro_desejado = $("#lucro_desejado").val();
+		var lucro_final = parseFloat($("#lucro_desejado").val()) + 0.5;
+		var cotacao_compra2 = parseFloat($("#cotacao_compra1").val());
+		var soma_lucro = (cotacao_compra1 * lucro_final) / 100;
+		var resultado = cotacao_compra2 + parseFloat(soma_lucro);
+		$('.aviso').html('');
+		if(cotacao_compra1 ==  0 || lucro_desejado == 0){
+			$('.aviso').html(alert);
+			$('.modal-content').addClass('primary');
+		}else{
+			$(".lucro_desejado").html("<div class='alert alert-success' role='alert'><strong>O indicado para venda é R$ </strong>"+resultado.toFixed(2)+"</div>");
+			$("#compra_cotacao").val(cotacao_compra1);
+		}
+	});
+
 	//função para atualizar os valores:
 	$("#atualizar").click(function(){
  		location.reload();
  	});
-	// funções para limpar as div de resultado:
+ 	
+	// funções para limpar as div's de resultado:
 	$(".l1").click(function(){
 		$(".conversao").html("");
 	});
@@ -119,8 +159,12 @@ $(document).ready(function(){
 		$(".calculo_lucro1").html("");
 		$(".calculo_lucro2").html("");
 		$(".calculo_lucro3").html("");
+		$(".calculo_lucro4").html("");
 	});
 	$(".l3").click(function(){
 		$(".conversao1").html("");
 	});
-});	
+	$(".l4").click(function(){
+		$(".lucro_desejado").html("");
+	});
+});
